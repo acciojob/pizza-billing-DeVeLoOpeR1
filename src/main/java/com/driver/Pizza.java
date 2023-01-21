@@ -78,10 +78,6 @@ public class Pizza {
                 this.bill += "Paperbag Added: 20"+" \n";
             this.bill += "Total Price: " + this.price + "\n";
         }
-        else
-        {
-            this.bill +="You Have Already generated your bill "+"\n";
-        }
         return bill;
     }
 }
