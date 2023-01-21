@@ -73,14 +73,14 @@ public class Pizza {
             if (cheeseAdded)
                 this.bill += "Extra Cheese Added: 80"+ "\n";
             if (toppingAdded)
-                this.bill += "Extra Toppings Added: 70" +"\n";
+                this.bill += "Extra Toppings Added: "+this.topping +"\n";
             if (carryBagAdded)
                 this.bill += "Paperbag Added: 20"+" \n";
             this.bill += "Total Price: " + this.price + "\n";
         }
         else
         {
-            this.bill +="You Have Already generated your bill ";
+            this.bill +="You Have Already generated your bill "+"\n";
         }
         return bill;
     }
