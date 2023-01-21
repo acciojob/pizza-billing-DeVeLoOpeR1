@@ -7,17 +7,32 @@ public class Pizza {
     private boolean cheeseAdded;
     private boolean toppingAdded;
     private boolean carryBagAdded;
+    private boolean billIsGenerated;
+    private String bill;
+    private int cheese;
+    private int topping;
 
 
-    public Pizza(Boolean isVeg){
+    public Pizza(Boolean isVeg) {
+        this.bill = "";
+        this.carryBagAdded = false;
+        this.cheeseAdded = false;
+        this.toppingAdded = false;
+        this.billIsGenerated = false;
         this.isVeg = isVeg;
-        if(this.isVeg)
-           this.price = 300;
+        if (this.isVeg)
+        {
+            this.price = 300;
+            this.topping = 70;
+        }
         else
         {
-           this.price = 400;
+            this.price = 400;
+            this.topping = 130;
+
         }
-        System.out.println("Base Price Of The Pizza: " + getPrice());
+        this.cheese = 80;
+        System.out.println("Base Price Of The Pizza: " + this.price);
     }
 
     public int getPrice(){
@@ -32,8 +47,7 @@ public class Pizza {
         if(!this.cheeseAdded)
         {
            this.cheeseAdded = true;
-           this.price += 80;
-            System.out.println("Extra Cheese Added: 80");
+           this.price += this.cheese;
         }
 
     }
@@ -41,14 +55,7 @@ public class Pizza {
     public void addExtraToppings(){
         if(!this.toppingAdded){
             this.toppingAdded = true;
-            if(this.isVeg){
-               this.price += 70;
-                System.out.println("Extra Toppings Added: 70");
-            }
-            else {
-                this.price +=120;
-                System.out.println("Extra Toppings Added: 120");
-            }
+            this.price+=topping;
         }
     }
 
@@ -56,11 +63,25 @@ public class Pizza {
         if(!this.carryBagAdded){
             this.carryBagAdded = true;
             this.price +=20;
-            System.out.println("Paper bag Added: 20");
         }
     }
 
-    public String getBill(){
-        return ("Total Price: " + this.getPrice());
+    public String getBill()
+    {
+        if(!billIsGenerated) {
+            this.billIsGenerated = true;
+            if (cheeseAdded)
+                this.bill += "Extra Cheese Added: 80"+ "\n";
+            if (toppingAdded)
+                this.bill += "Extra Toppings Added: 70" +"\n";
+            if (carryBagAdded)
+                this.bill += "Paperbag Added: 20"+" \n";
+            this.bill += "Total Price: " + this.price + "\n";
+        }
+        else
+        {
+            this.bill +="You Have Already generated your bill ";
+        }
+        return bill;
     }
 }
