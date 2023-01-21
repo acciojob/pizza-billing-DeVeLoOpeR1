@@ -28,7 +28,7 @@ public class Pizza {
         else
         {
             this.price = 400;
-            this.topping = 130;
+            this.topping = 120;
 
         }
         this.cheese = 80;
